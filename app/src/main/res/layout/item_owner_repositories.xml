@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="ownerRepositoriesUiState"
+            type="com.evren.github.ui.owner.OwnerRepositoriesUiState" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        xmlns:tool="http://schemas.android.com/tools"
+        android:layout_margin="10dp"
+        android:id="@+id/repositoryContainer"
+        android:background="@drawable/bg_white_radius"
+        android:layout_height="120dp">
+
+        <TextView
+            android:id="@+id/tvRepoName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="@{ownerRepositoriesUiState.repoName}"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tool:text="Github Case Repo" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:id="@+id/tvRepoDesc"
+            android:text="@{ownerRepositoriesUiState.repoDescription}"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRepoName"
+            android:padding="10dp"
+            tool:text="Github Case Repo Test"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="@{ownerRepositoriesUiState.language}"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            tool:text="Github Case Repo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRepoDesc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

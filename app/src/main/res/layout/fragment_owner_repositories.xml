@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="userStatusViewState"
+            type="com.evren.github.base.StatusViewState" />
+
+        <variable
+            name="reposStatusViewState"
+            type="com.evren.github.base.StatusViewState" />
+
+        <variable
+            name="userViewState"
+            type="com.evren.github.ui.owner.OwnerUiState" />
+
+
+    </data>
+
+
+        <androidx.constraintlayout.motion.widget.MotionLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"
+            android:visibility="@{userStatusViewState.shouldShowContent()}"
+            app:layoutDescription="@xml/repository_detail_scene"
+       >
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:id="@+id/imgBack"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:src="@android:drawable/arrow_down_float"
+                android:rotation="90"
+                app:tint="@color/white" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivAvatar"
+                imageUrl="@{userViewState.imageUrl}"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="32dp"
+                android:padding="5dp"
+                app:layout_constraintDimensionRatio="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent=".28"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                app:srcCompat="@mipmap/ic_launcher"
+                app:strokeColor="@android:color/darker_gray"
+                app:strokeWidth="2dp" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{userViewState.ownerUserName}"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivAvatar"
+                app:layout_goneMarginBottom="40dp" />
+
+            <include
+                android:id="@+id/userNetworkErrorLayout"
+                layout="@layout/network_error_layout"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                app:layout_constraintBottom_toBottomOf="@id/tvName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:networkUiState="@{userStatusViewState}" />
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:paddingTop="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvName">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerOwnerRepos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:visibility="@{reposStatusViewState.shouldShowContent()}"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            </androidx.core.widget.NestedScrollView>
+            <include
+                android:id="@+id/reposNetworkErrorLayout"
+                layout="@layout/network_error_layout"
+                android:layout_height="0dp"
+                android:layout_width="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/scrollView"
+                app:networkUiState="@{reposStatusViewState}" />
+
+        </androidx.constraintlayout.motion.widget.MotionLayout>
+
+
+</layout>

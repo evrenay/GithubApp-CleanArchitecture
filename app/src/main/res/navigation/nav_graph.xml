@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/navigationRepositories"
+    android:id="@+id/nav_graph">
+    <fragment
+        android:id="@+id/navigationRepositories"
+        android:name="com.evren.github.ui.repositories.RepositoriesFragment"
+        android:label="RepositoriesFragment"
+        tools:layout="@layout/fragment_repositories" >
+        <action
+            android:id="@+id/action_navigationRepositories_to_navigationRepositoryDetail"
+            app:destination="@id/navigationRepositoryDetail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigationRepositoryDetail"
+        android:name="com.evren.github.ui.detail.RepositoryDetailFragment"
+        android:label="RepositoryDetailFragment"
+        tools:layout="@layout/fragment_repository_detail" >
+        <action
+            android:id="@+id/action_navigationRepositoryDetail_to_navigationOwnerRepositories"
+            app:destination="@id/navigationOwnerRepositories" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigationOwnerRepositories"
+        android:name="com.evren.github.ui.owner.OwnerRepositoriesFragment"
+        android:label="OwnerRepositoriesFragment"
+        tools:layout="@layout/fragment_owner_repositories" />
+
+</navigation>

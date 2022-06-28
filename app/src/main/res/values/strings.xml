@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">GithubApp</string>
+    <string name="retry">Retry</string>
+    <string name="something_went_wrong">Something went wrong.</string>
+    <string name="more_detail">More detail</string>
+    <string name="super_like">Super like</string>
+    <string name="repo_name">Repo Name</string>
+    <string name="fork_count">Fork Count</string>
+    <string name="repo_language">Language</string>
+    <string name="default_branch_name">Default Branch Name</string>
+</resources>
